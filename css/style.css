@@ -1,0 +1,340 @@
+/* ==========================================
+   1. RESET & BASE STYLES
+   ========================================== */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #fff;
+    font-family: sans-serif;
+    overflow-x: hidden; /* Mencegah halaman bisa digeser ke kanan-kiri */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   2. NAVBAR STYLES
+   ========================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    
+    max-width: 1300px; 
+    height: 75px;      
+    padding: 0 30px;   
+    margin: 0 auto;    
+    z-index: 1000;
+    
+    border-radius: 55px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px; /* Tetap 55px agar seimbang dengan tinggi navbar 75px */
+    width: auto;       
+    display: block;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+nav ul li a:hover {
+    color: #23C292; /* Efek hover hijau pada menu tengah */
+}
+
+/* ==========================================
+   3. MENU KANAN & BUTTON STYLES
+   ========================================== */
+.menu-kanan {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.menu-kanan li {
+    margin: 0;
+    display: flex;      
+    align-items: center;
+}
+
+/* Jarak antar tombol jika Logout & Dashboard muncul bersamaan */
+.menu-kanan li + li {
+    margin-left: 10px; 
+}
+
+.btn-login, .btn-dashboard, .btn-logout {
+    padding: 10px 22px;
+    border-radius: 55px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; 
+    line-height: 1;
+    transition: all 0.3s ease;
+}
+
+.btn-login {
+    background-color: #23C292;
+    color: #ffffff !important;
+}
+
+.btn-login:hover {
+    background-color: #1da37a;
+}
+
+.btn-dashboard {
+    background-color: transparent; 
+    color: #23C292 !important; 
+    border: 2px solid #23C292; 
+}
+
+.btn-dashboard:hover {
+    background-color: #23C292;
+    color: #ffffff !important;
+}
+
+.btn-logout {
+    background-color: #ff4d4d;
+    color: #ffffff !important;
+}
+
+.btn-logout:hover {
+    background-color: #e60000;
+}
+
+/* ==========================================
+   4. HEADER / HERO SECTION STYLES
+   ========================================== */
+.header-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.image-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
+}
+
+.image-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); 
+    z-index: 2;
+}
+
+.text-header {
+    position: relative;
+    z-index: 1; 
+    text-align: left;
+    max-width: 900px;
+    padding: 0px 0px;
+}
+
+.header-1 {
+    font-size: 48px; 
+    font-weight: 800;
+    letter-spacing: 2px; 
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    text-transform: uppercase; 
+}
+
+.header-2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #e0e0e0; 
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.btn-sewa {
+    background-color: #23C292; 
+    color: #ffffff;
+    border: none;
+    padding: 15px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 55px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    box-shadow: 0 4px 15px rgba(35, 194, 146, 0.4); 
+    transition: all 0.3s ease;
+}
+
+.btn-sewa:hover {
+    background-color: #1da37a;
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 20px rgba(35, 194, 146, 0.6);
+}
+
+/* ==========================================
+   5. CONTENT & FEATURES STYLES
+   ========================================== */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 80px auto; /* Diperlebar jaraknya agar konten tidak terselip di bawah header */
+    padding: 0 20px;
+    z-index: 5;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h1 {
+    color: #000000;
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    color: #000000;
+    font-size: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.features-section {
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.features-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; 
+    width: 100%;
+}
+
+.feature-card {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 35px; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.50); 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.icon-wrapper {
+    background-color: #23C292; 
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; 
+    margin-bottom: 25px; 
+}
+
+.feature-card h3 {
+    color: #000000;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 15px 0; 
+}
+
+.feature-card p {
+    color: #444444; 
+    font-size: 15px;
+    line-height: 1.6; 
+    margin: 0;
+}
+
+/* ==========================================
+   6. RESPONSIVE MEDIA QUERIES
+   ========================================== */
+@media (max-width: 768px) {
+    .header-1 {
+        font-size: 32px; 
+    }
+    
+    .header-2 {
+        font-size: 16px; 
+    }
+
+    .btn-sewa {
+        padding: 12px 28px;
+        font-size: 16px;
+    }
+
+    .section-title h1 {
+        font-size: 28px;
+    }
+}
