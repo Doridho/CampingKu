@@ -16,7 +16,7 @@ body {
 }
 
 /* ==========================================
-   2. NAVBAR STYLES
+   2. NAVBAR STYLES (DASAR & GLOBAL)
    ========================================== */
 .navbar {
     display: flex;
@@ -36,6 +36,7 @@ body {
     
     border-radius: 55px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
 }
 
 .logo {
@@ -44,61 +45,16 @@ body {
 }
 
 .logo img {
-    height: 60px; /* Tetap 55px agar seimbang dengan tinggi navbar 75px */
+    height: 60px; 
     width: auto;       
     display: block;
 }
 
-nav {
-    display: flex;
-    align-items: center;
+.menu-toggle {
+    display: none;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #000000;
-    font-weight: 500;
-    transition: color 0.2s ease;
-}
-
-nav ul li a:hover {
-    color: #23C292; /* Efek hover hijau pada menu tengah */
-}
-
-/* ==========================================
-   3. MENU KANAN & BUTTON STYLES
-   ========================================== */
-.menu-kanan {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-}
-
-.menu-kanan li {
-    margin: 0;
-    display: flex;      
-    align-items: center;
-}
-
-/* Jarak antar tombol jika Logout & Dashboard muncul bersamaan */
-.menu-kanan li + li {
-    margin-left: 10px; 
-}
-
+/* Styles dasar tombol (Biar gak duplikat kodenya) */
 .btn-login, .btn-dashboard, .btn-logout {
     padding: 10px 22px;
     border-radius: 55px;
@@ -112,37 +68,148 @@ nav ul li a:hover {
     transition: all 0.3s ease;
 }
 
-.btn-login {
-    background-color: #23C292;
-    color: #ffffff !important;
-}
+.btn-login { background-color: #23C292; color: #ffffff !important; }
+.btn-login:hover { background-color: #1da37a; }
+.btn-logout { background-color: #ff4d4d; color: #ffffff !important; }
+.btn-logout:hover { background-color: #e60000; }
+.btn-dashboard { background-color: transparent; color: #23C292 !important; border: 2px solid #23C292; }
+.btn-dashboard:hover { background-color: #23C292; color: #ffffff !important; }
 
-.btn-login:hover {
-    background-color: #1da37a;
-}
+/* ==========================================
+   2A. UNTUK LAYAR MONITOR / LAPTOP (PC MODE)
+   ========================================== */
+@media (min-width: 769px) {
+    /* Wadah utama pembungkus setelah logo */
+    .nav-container {
+        display: flex !important;
+        justify-content: space-between; /* Memisahkan nav tengah dan menu kanan */
+        align-items: center;
+        flex: 1; /* Paksa mengambil sisa ruang kosong navbar agar bisa membagi jarak */
+        margin-left: 40px; /* Jarak aman antara logo dan menu tengah */
+    }
 
-.btn-dashboard {
-    background-color: transparent; 
-    color: #23C292 !important; 
-    border: 2px solid #23C292; 
-}
+    nav {
+        display: flex;
+        align-items: center;
+        margin: 0 auto; /* KUNCI SAKTI: Memaksa menu tengah berada pas di tengah-tengah navbar */
+    }
 
-.btn-dashboard:hover {
-    background-color: #23C292;
-    color: #ffffff !important;
-}
+    nav ul {
+        display: flex !important;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+    }
 
-.btn-logout {
-    background-color: #ff4d4d;
-    color: #ffffff !important;
-}
+    nav ul li {
+        margin: 0 20px; /* Jarak antar teks menu (Beranda, Produk, Kontak) */
+    }
 
-.btn-logout:hover {
-    background-color: #e60000;
+    nav ul li a {
+        text-decoration: none;
+        color: #000000;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+    nav ul li a:hover {
+        color: #23C292;
+    }
+
+    /* Menu Kanan (Login/Dashboard) tetap terkunci di pojok kanan navbar */
+    .menu-kanan {
+        display: flex !important;
+        flex-direction: row !important; /* Paksa tetap ke samping di PC */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .menu-kanan li {
+        margin: 0 !important;
+    }
+
+    .menu-kanan li a {
+        text-decoration: none;
+        color: #000000;
+        font-weight: 500;
+    }
 }
 
 /* ==========================================
-   4. HEADER / HERO SECTION STYLES
+   2B. UNTUK LAYAR HP (MOBILE RESPONSIVE MODE)
+   ========================================== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block !important;
+        background: none;
+        border: none;
+        color: #000000;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Kunci utama: Sembunyikan container di HP saat pertama load */
+    .nav-container {
+        display: none; /* Hilangkan !important di sini agar kelas active di bawah bisa nembus */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 85px; 
+        left: 0;
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        gap: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Pemicu muncul pas diklik hamburger */
+    .nav-container.active {
+        display: flex !important; 
+    }
+
+    /* Paksa semua list menu di HP tegak lurus ke bawah */
+    nav, nav ul, .menu-kanan {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        padding: 0;
+        margin: 0;
+        gap: 15px;
+        list-style: none;
+        text-align: center;
+    }
+
+    nav ul li, .menu-kanan li {
+        margin: 0 !important;
+        width: 100%;
+        display: block;
+    }
+
+    nav ul li a, .menu-kanan li a {
+        display: block;
+        width: 100%;
+        padding: 8px 0;
+        font-size: 16px;
+        color: #000000;
+        text-decoration: none;
+    }
+
+    /* Tombol menyesuaikan frame HP */
+    .btn-login, .btn-dashboard, .btn-logout {
+        width: 90% !important;
+        margin: 0 auto;
+        padding: 12px 0;
+        border-radius: 15px;
+    }
+}
+/* ==========================================
+   4. HEADER / HERO SECTION STYLES (PC DEFAULT)
    ========================================== */
 .header-container {
     position: relative;
@@ -181,12 +248,14 @@ nav ul li a:hover {
     z-index: 2;
 }
 
+/* Di PC kita kasih padding tipis 20px biar kalau layarnya di-resize gak lari ke dinding */
 .text-header {
     position: relative;
-    z-index: 1; 
+    z-index: 3; /* Naikkan ke z-index 3 agar berada di atas overlay ::after (z-index 2) */
     text-align: left;
     max-width: 900px;
-    padding: 0px 0px;
+    padding: 0 20px; 
+    box-sizing: border-box;
 }
 
 .header-1 {
@@ -230,6 +299,33 @@ nav ul li a:hover {
     box-shadow: 0 6px 20px rgba(35, 194, 146, 0.6);
 }
 
+
+/* ==========================================
+   4C. HERO SECTION RESPONSIVE (KHUSUS LAYAR HP)
+   ========================================== */
+@media (max-width: 768px) {
+    .text-header {
+        text-align: left; /* Di HP lebih estetik kalau posisinya rata tengah */
+        padding: 0 30px; /* KUNCI SAKTI: Memberi ruang napas 30px agar gak nempel dinding HP */
+    }
+
+    .header-1 {
+        font-size: 28px; /* Perkecil font biar pas masuk frame HP dan gak kepotong berantakan */
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .header-2 {
+        font-size: 16px; /* Sesuaiin ukuran sub-judul biar enak dibaca di HP */
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+
+    .btn-sewa {
+        padding: 12px 30px; /* Sesuaikan ukuran tombol dikit biar gak kegedean di jempol */
+        font-size: 16px;
+    }
+}
 /* ==========================================
    5. CONTENT & FEATURES STYLES
    ========================================== */
@@ -336,5 +432,330 @@ nav ul li a:hover {
 
     .section-title h1 {
         font-size: 28px;
+    }
+}
+
+/* ==========================================
+   7. SEKSI PRODUK POPULER (GRID & CARD)
+   ========================================== */
+
+/* Bungkus utama seksi produk */
+.product-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+/* Container yang mengatur kartu biar otomatis berjejer ke samping */
+.product-container {
+    display: grid;
+    /* Membuat grid otomatis: minimal lebar kartu 230px, sisa ruang dibagi rata */
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px; /* Jarak antar kartu produk */
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+/* Desain satu kotak kartu produk (Background putih) */
+.product-card {
+    background-color: #ffffff;
+    border-radius: 25px; /* Sudut kartu melengkung halus */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Mengatur semua teks di dalam rata kiri */
+    text-align: left;
+    /* Bayangan gelap tebal di bawah kartu agar terlihat melayang premium */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); 
+    transition: transform 0.3s ease;
+}
+
+/* Efek interaktif saat kursor mouse menyentuh kartu */
+.product-card:hover {
+    transform: translateY(-5px); /* Kartu agak sedikit naik ke atas */
+}
+
+/* Pembungkus gambar produk */
+.product-image {
+    width: 100%;
+    height: 170px;
+    background-color: #171717; /* Warna dasar jika gambar belum muncul */
+    border-radius: 20px;
+    overflow: hidden; /* Memaksa gambar mengikuti lengkungan sudut wrapper */
+    margin-bottom: 15px;
+}
+
+/* Mengunci ukuran gambar di dalam kartu */
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Menjaga rasio gambar biar tidak gepeng atau ketarik */
+    object-position: center;
+}
+
+/* Desain Judul Produk (H3) */
+.product-card h3 {
+    color: #000000; /* Warna teks hitam di atas kartu putih */
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+}
+
+/* Desain Paragraf Deskripsi Singkat */
+.product-card p {
+    color: #666666; /* Abu-abu agar tidak terlalu pekat */
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0 0 12px 0;
+}
+
+/* Desain Teks Harga Produk (Span) */
+.product-price {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Desain Tombol "Sewa Sekarang" khusus di dalam Kartu */
+.btn-card-sewa {
+    width: 100%; /* Tombol memanjang penuh memenuhi lebar kartu */
+    background-color: #23C292; /* Hijau tema CampingKu */
+    color: #ffffff;
+    border: none;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Jarak antara ikon keranjang dan teks sewa */
+    transition: background 0.2s ease;
+}
+
+.btn-card-sewa:hover {
+    background-color: #1da37a; /* Hijau sedikit lebih gelap saat di-hover */
+}
+
+/* ==========================================
+   8. TOMBOL LIHAT SEMUA (DI BAWAH CONTAINER)
+   ========================================== */
+.more-products {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-view-all {
+    color: #23C292;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 35px;
+    border: 2px solid #23C292;
+    border-radius: 55px;
+    transition: all 0.3s ease;
+}
+
+.btn-view-all:hover {
+    background-color: #23C292;
+    color: #ffffff;
+}
+
+/* ==========================================
+   9. SEKSI FOOTER (MODULAR LAYOUT)
+   ========================================== */
+
+/* Background Hijau Emerald Utama */
+footer {
+    background-color: #23C292; 
+    color: #171717; /* Teks gelap agar kontrasnya pas */
+    padding: 60px 0 20px 0;
+    font-family: sans-serif;
+    width: 100%;
+}
+
+/* Container flex untuk membagi 4 box kolom */
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+/* Pengaturan lebar kolom */
+.footer-box {
+    flex: 1;
+    min-width: 220px; 
+}
+
+/* Baris Logo & Judul Brand */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.footer-logo h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Judul setiap kolom di footer */
+.footer-box h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Deskripsi teks dan paragraf ikon */
+.footer-box p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 10px 0;
+}
+
+/* Mengatur jarak ikon font-awesome biar gak mepet teks */
+.footer-box p i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+}
+
+/* Reset list bawaan HTML (menghilangkan bullet point) */
+.footer-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-box ul li {
+    margin-bottom: 12px;
+}
+
+/* Styling link menu navigasi */
+.footer-box ul li a {
+    color: #171717;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+/* Efek hover ketika cursor menyentuh link */
+.footer-box ul li a:hover {
+    padding-left: 5px; /* Efek geser kanan halus */
+    font-weight: bold;
+}
+
+/* ==========================================
+   10. FOOTER BOTTOM (COPYRIGHT)
+   ========================================== */
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(23, 23, 23, 0.15); /* Garis pembatas tipis hitam transparan */
+    width: 100%;
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    margin: 0;
+    color: rgba(23, 23, 23, 0.8);
+}
+
+/* Responsive: otomatis menyusun ke bawah kalau di layar HP */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 35px;
+    }
+    .footer-box {
+        width: 100%;
+    }
+}
+
+/* ==========================================
+   11. RESPONSIVE NAVBAR (UNTUK LAYAR HP)
+   ========================================== */
+
+/* Pengaturan untuk Layar HP / Mobile */
+@media (max-width: 768px) {
+    /* Munculkan tombol garis tiga di pojok kanan */
+    .menu-toggle {
+        display: block !important;
+        background: none;
+        border: none;
+        color: #171717;
+        font-size: 24px;
+        cursor: pointer;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 999;
+    }
+
+    /* Sembunyikan menu utama secara default */
+    .nav-container {
+        display: none; 
+        flex-direction: column;
+        width: 100%;
+        margin-top: 50px; /* Kasih jarak biar gak numpuk sama logo */
+        gap: 20px;
+        text-align: center;
+    }
+
+    /* Kunci Utama: Saat tombol diklik, JS nambahin class 'active', menu langsung muncul */
+    .nav-container.active {
+        display: flex !important; 
+    }
+
+    /* Menu tengah berjejer ke bawah */
+    .navbar nav ul {
+        flex-direction: column;
+        gap: 15px;
+        padding: 0;
+    }
+
+    /* Menu login/logout berjejer ke bawah */
+    .menu-kanan {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+        gap: 12px;
+    }
+
+    .menu-kanan li, .menu-kanan li a {
+        width: 80%; /* Tombol menyesuaikan frame HP */
+    }
+}
+
+/* Pengaturan untuk Layar PC / Monitor Lebar */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none; /* Sembunyikan tombol garis tiga di PC */
+    }
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
 }

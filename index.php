@@ -11,33 +11,13 @@ require_once './koneksi/koneksi.php';
     <title>CampingKu - Rental Alat Camping</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="./js/script.js"></script>
 </head>
 <body>
-
-    <div class="navbar">
-        <div class="logo">
-            <img src="./img/logo.png" alt="Logo CampingKu">
-        </div>
-        
-        <nav>
-            <ul>
-                <li><a href="./index.php">Beranda</a></li>
-                <li><a href="./produk.php">Produk</a></li>
-                <li><a href="./kontak.php">Hubungi Kami</a></li>
-            </ul>
-        </nav>
-
-        <ul class="menu-kanan">
-            <?php
-            if (isset($_SESSION['user_id'])) {
-                echo '<li><a href="./logout.php" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>';
-                echo '<li><a href="./dahboard.php" class="btn-dashboard"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>';
-            } else {
-                echo '<li><a href="./login.php" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>';
-            }
-            ?>
-        </ul>
-    </div>
+    <?php
+    require_once './koneksi/koneksi.php';
+    include_once './layout/navbar.php'; //memanggil navbar
+    ?>
 
     <div class="header-container">
         <div class="image-bg">
@@ -90,41 +70,33 @@ require_once './koneksi/koneksi.php';
                 <h1>Produk Populer</h1>
                 <p>Pilihan terbaik untuk petualangan Anda.</p>
             </div>
-
-            <div class="product-container">
-                <div class="product-card">
-                    <img src="./img/tenda.jpg" alt="Tenda">
-                    <h3>Tenda</h3>
-                    <p>Tenda camping dengan kualitas terbaik.</p>
-                    <span class="product-price">Rp 50.000/hari</span>
-                    <button class="btn-sewa"><i class="fa-solid fa-cart-shopping"></i> Sewa Sekarang</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="./img/tenda.jpg" alt="Tenda">
-                    <h3>Tenda</h3>
-                    <p>Tenda camping dengan kualitas terbaik.</p>
-                    <span class="product-price">Rp 50.000/hari</span>
-                    <button class="btn-sewa"><i class="fa-solid fa-cart-shopping"></i> Sewa Sekarang</button>
-                </div>
-
-                <div class="product-card">
-                    <img src="./img/tenda.jpg" alt="Tenda">
-                    <h3>Tenda</h3>
-                    <p>Tenda camping dengan kualitas terbaik.</p>
-                    <span class="product-price">Rp 50.000/hari</span>
-                    <button class="btn-sewa"><i class="fa-solid fa-cart-shopping"></i> Sewa Sekarang</button>
-                </div>
-                
-                <div class="product-card">
-                    <img src="./img/tenda.jpg" alt="Tenda">
-                    <h3>Tenda</h3>
-                    <p>Tenda camping dengan kualitas terbaik.</p>
-                    <span class="product-price">Rp 50.000/hari</span>
-                    <button class="btn-sewa"><i class="fa-solid fa-cart-shopping"></i> Sewa Sekarang</button>
-                </div>
+                <div class="product-container">
+                <?php
+                    $query_produk = "SELECT * FROM produk ORDER BY id_produk DESC LIMIT 4";
+                    $tampil_produk = mysqli_query($koneksi , $query_produk);
+                    
+                    if (mysqli_num_rows($tampil_produk) == 0) {
+                        echo "<p style='color: yellow; text-align: center; width: 100%;'>Pesan Tes: Data di database kosong, Makanya Kartu Gak Muncul!</p>";
+                    }
+                    while($row = mysqli_fetch_assoc($tampil_produk)){
+                    ?>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./img/<?php echo $row['gambar']?>" alt="<?php echo $row['nama_produk']; ?>">
+                        </div>
+                        <h3><?php echo $row['nama_produk']; ?></h3>
+                        <p><?php echo $row['deskripsi']; ?></p>
+                        <span class="product-price">Rp <?php echo number_format($row['harga'],0,',','.'); ?> /hari</span>
+                        <button class="btn-card-sewa"><i class="fa-solid fa-cart-shopping"></i> Sewa Sekarang</button>
+                    </div>
+                <?php
+                    }
+                ?>    
             </div>
         </section>
     </div>
+
+    <?php include_once './layout/footer.php'; ?>
+    <script src="./js/script.js"></script>
 </body>
 </html>

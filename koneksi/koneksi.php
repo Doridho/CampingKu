@@ -1,13 +1,13 @@
 <?php
-$host = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'CampingKu';
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "CampingKu"; 
 
-$conn = new mysqli($host, $username, $password, $database);
+$koneksi = mysqli_connect($host, $user, $pass, $db);
 
-if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
+// Cek koneksi
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
 }
-
-session_start();
+?>
