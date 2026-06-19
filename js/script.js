@@ -1,12 +1,8 @@
-// Kita bungkus pakai window.onload biar script BARU JALAN setelah 
+// Kita pakai window.onload biar script BARU JALAN setelah 
 // semua HTML, CSS, dan PHP selesai dimuat sempurna oleh browser.
 window.onload = function() {
     const menuToggle = document.getElementById('menu-toggle');
     const navContainer = document.getElementById('nav-container');
-
-    // Cek di background console buat mastiin tombolnya beneran ketangkap
-    console.log("Tombol Hamburger:", menuToggle);
-    console.log("Kontainer Menu:", navContainer);
 
     if (menuToggle && navContainer) {
         menuToggle.addEventListener('click', function(e) {

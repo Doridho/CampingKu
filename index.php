@@ -14,11 +14,14 @@ require_once './koneksi/koneksi.php';
     <script src="./js/script.js"></script>
 </head>
 <body>
+
+    <!-- memanggil navbar yang ada di folder layout -->
     <?php
     require_once './koneksi/koneksi.php';
-    include_once './layout/navbar.php'; //memanggil navbar
+    include_once './layout/navbar.php'; 
     ?>
 
+    <!-- header section -->
     <div class="header-container">
         <div class="image-bg">
             <img src="./img/landingpage.jpeg" alt="Landing Page">
@@ -70,6 +73,8 @@ require_once './koneksi/koneksi.php';
                 <h1>Produk Populer</h1>
                 <p>Pilihan terbaik untuk petualangan Anda.</p>
             </div>
+
+            <!-- perulangan untuk menampilkan produk -->
                 <div class="product-container">
                 <?php
                     $query_produk = "SELECT * FROM produk ORDER BY id_produk DESC LIMIT 4";
@@ -96,6 +101,7 @@ require_once './koneksi/koneksi.php';
         </section>
     </div>
 
+    <!-- memanggil footer yang ada di folder layout -->
     <?php include_once './layout/footer.php'; ?>
     <script src="./js/script.js"></script>
 </body>

@@ -3,18 +3,18 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-<!-- NAVBAR FIXED SECTION -->
+<!-- NAVBAR SECTION -->
 <div class="navbar">
     <div class="logo">
         <img src="./img/logo.png" alt="Logo CampingKu">
     </div>
     
-    <!-- 🚨 PERHATIKAN: WAJIB id="menu-toggle" (pakai strip, huruf kecil semua) -->
+    <!-- id toggle -->
     <button class="menu-toggle" id="menu-toggle">
         <i class="fa-solid fa-bars"></i>
     </button>
     
-    <!-- 🚨 INI DIA BIANG KEROKNYA! WAJIB id="nav-container" (pakai strip, huruf kecil semua) -->
+    <!-- id navbar -->
     <div class="nav-container" id="nav-container">
         <nav>
             <ul>
