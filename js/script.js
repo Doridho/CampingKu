@@ -1,4 +1,4 @@
-// Kita pakai window.onload biar script BARU JALAN setelah 
+//  pakai window.onload biar script BARU JALAN setelah 
 // semua HTML, CSS, dan PHP selesai dimuat sempurna oleh browser.
 window.onload = function() {
     const menuToggle = document.getElementById('menu-toggle');
@@ -15,6 +15,6 @@ window.onload = function() {
             console.log("Status Kelas Sekarang:", navContainer.className);
         });
     } else {
-        console.log("Waduh, elemennya masih belum ketemu di HTML!");
+        console.log("elemen belum muncul");
     }
 };

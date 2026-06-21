@@ -1,0 +1,274 @@
+/* =========================
+   RESET CSS
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero-kontak {
+    background-color: #5DB99B;
+    height: 460px;
+
+    margin-top: 110px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 16px;
+}
+
+/* =========================
+   SECTION KONTAK
+========================= */
+.kontak-section {
+    width: 90%;
+    margin: 60px auto;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+/* INFORMASI KONTAK */
+.info-kontak {
+    width: 40%;
+}
+
+.info-kontak h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* Setiap item kontak */
+.item-kontak {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+/* Lingkaran icon */
+.icon {
+    width: 50px;
+    height: 50px;
+
+    background-color: #31C59B;
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+}
+
+.item-kontak h4 {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.item-kontak p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Tombol WhatsApp */
+.btn-wa {
+    display: inline-block;
+
+    background-color: #57BEA1;
+    color: white;
+
+    text-decoration: none;
+
+    padding: 12px 30px;
+    border-radius: 10px;
+
+    margin-top: 10px;
+
+    transition: 0.3s;
+}
+
+.btn-wa:hover {
+    opacity: 0.8;
+}
+
+/* =========================
+   FORM KONTAK
+========================= */
+.form-kontak {
+    width: 55%;
+
+    background-color: white;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.form-kontak h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+/* Membuat 2 kolom input */
+.kontak-row {
+    display: flex;
+    gap: 20px;
+}
+
+/* Group input */
+.group {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Input */
+.group input {
+    width: 100%;
+    height: 42px;
+
+    border: none;
+    border-radius: 20px;
+
+    background-color: #d9d9d9;
+
+    padding: 0 15px;
+
+    outline: none;
+}
+
+/* Textarea */
+.group textarea {
+    width: 100%;
+    height: 180px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #d9d9d9;
+
+    padding: 15px;
+
+    resize: none;
+    outline: none;
+}
+
+/* Tombol Kirim */
+button {
+    width: 100%;
+    height: 45px;
+
+    background-color: #57BEA1;
+    color: white;
+
+    border: none;
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+@media(max-width: 992px) {
+
+    .kontak-section {
+        flex-direction: column;
+    }
+
+    .info-kontak,
+    .form-kontak {
+        width: 100%;
+    }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+@media(max-width: 768px) {
+
+    .hero-content h1 {
+        font-size: 28px;
+    }
+
+    .kontak-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-kontak {
+        padding: 25px;
+    }
+
+    .info-kontak h2,
+    .form-kontak h2 {
+        font-size: 24px;
+    }
+}
+
+.banner-atas {
+    width: 100%;
+    height: 120px;
+    background: #f5f5f5;
+}
+
+.kontak-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto 120px auto;
+}
+
+.hero-content h1 {
+    color: #000;
+    font-weight: bold;
+}
+
+.hero-content p {
+    color: #333;
+}
+
+.info-kontak h2,
+.form-kontak h2 {
+    color: #000;
+}
+
+.item-kontak h4 {
+    color: #000;
+}
