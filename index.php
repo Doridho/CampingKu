@@ -101,7 +101,7 @@ require_once './koneksi/koneksi.php';
         </section>
     </div>
 
-    <!-- memanggil footer yang ada di folder layout -->
+    <!-- memanggil footer yang ada di folder layout dan memanggil javascript -->
     <?php include_once './layout/footer.php'; ?>
     <script src="./js/script.js"></script>
 </body>
