@@ -30,7 +30,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 echo '<li><a href="./logout.php" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>';
                 echo '<li><a href="./dashboard.php" class="btn-dashboard"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>';
             } else {
-                echo '<li><a href="./login.php" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>';
+                echo '<li><a href="./form_login.php" class="btn-login"><i class="fa-solid fa-right-to-bracket"></i> Login</a></li>';
             }
             ?>
         </ul>

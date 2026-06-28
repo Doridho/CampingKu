@@ -24,7 +24,7 @@ require_once './koneksi/koneksi.php';
     <!-- header section -->
     <div class="header-container">
         <div class="image-bg">
-            <img src="./img/landingpage.jpeg" alt="Landing Page">
+            <img src="./img/landing_page.jpeg" alt="Landing Page">
         </div>
         <div class="text-header">
             <h1 class="header-1">PETUALANGAN HEBAT DIMULAI DARI SINI</h1>
