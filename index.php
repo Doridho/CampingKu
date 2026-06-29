@@ -92,7 +92,7 @@ require_once './koneksi/koneksi.php';
                         <h3><?php echo $row['nama_produk']; ?></h3>
                         <p><?php echo $row['deskripsi']; ?></p>
                         <span class="product-price">Rp <?php echo number_format($row['harga'],0,',','.'); ?> /hari</span>
-                        <button class="btn-card-sewa"><i class="fa-solid fa-cart-shopping"></i> Sewa Sekarang</button>
+                        <a href="koneksi/proses_pesan.php?id=<?php echo $row['id_produk']; ?>" class="btn-card-sewa" style="text-decoration: none; display: inline-flex;"><i class="fa-solid fa-cart-shopping"></i> Sewa Sekarang</a>
                     </div>
                 <?php
                     }

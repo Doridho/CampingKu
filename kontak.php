@@ -109,7 +109,7 @@ require_once 'koneksi/koneksi.php';
 
             <h2>Kirim Pesan</h2>
 
-            <form action="proses_kontak.php" method="POST">
+            <form action="koneksi/proses_kontak.php" method="POST">
 
                 <!-- Baris 1 -->
                 <div class="row">
